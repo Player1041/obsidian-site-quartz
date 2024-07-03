@@ -5,6 +5,9 @@ on:
     workflows: ["Submodules Sync"]
     types:
       - completed
+  push:
+    branches:
+      - v4
  
 permissions:
   contents: read
