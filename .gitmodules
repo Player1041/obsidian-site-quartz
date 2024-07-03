@@ -1,0 +1,6 @@
+[submodule "obsidian-notes"]
+	path = obsidian-notes
+	url = https://github.com/Player1041/obsidian-notes
+[submodule "content/obsidian-notes"]
+	path = content/obsidian-notes
+	url = https://github.com/Player1041/obsidian-notes
