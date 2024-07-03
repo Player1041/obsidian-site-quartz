@@ -1,4 +1,4 @@
 
 [submodule "content"]
-	path = content/content
+	path = content
 	url = https://github.com/Player1041/content
