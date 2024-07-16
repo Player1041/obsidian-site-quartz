@@ -18,7 +18,7 @@ import { toHtml } from "hast-util-to-html"
 import { PhrasingContent } from "mdast-util-find-and-replace/lib"
 import { capitalize } from "../../util/lang"
 import { PluggableList } from "unified"
-ss
+
 const charming_js = `
 // minified https://github.com/yuanqing/charming
 // const c=function(e,{tagName:t="span",split:n,setClassName:r=function(e){return"char"+e}}={}){e.normalize();let i=1;function o(e){let o=e.parentNode,a=e.nodeValue,l=n?n(a):a.split("");l.forEach(function(n){let a=document.createElement(t),l=r(i++,n);l&&(a.className=l),a.appendChild(document.createTextNode(n)),a.setAttribute("aria-hidden","true"),o.insertBefore(a,e)}),""!==a.trim()&&o.setAttribute("aria-label",a),o.removeChild(e)}!function e(t){if(3===t.nodeType)return o(t);let n=Array.prototype.slice.call(t.childNodes),r=n.length;if(1===r&&3===n[0].nodeType)return o(n[0]);n.forEach(function(t){e(t)})}(e)};
