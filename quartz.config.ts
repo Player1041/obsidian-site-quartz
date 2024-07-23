@@ -53,6 +53,7 @@ const config: QuartzConfig = {
   plugins: {
     transformers: [
       Plugin.FancyText(),
+      Plugin.HardLineBreaks(),
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "filesystem"],
