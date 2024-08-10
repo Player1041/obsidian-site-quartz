@@ -16,7 +16,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "player1041.github.io/notes",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["personal", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
