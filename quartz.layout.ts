@@ -26,9 +26,8 @@ export const defaultContentPageLayout: PageLayout = {
     Component.Search(),
     Component.Darkmode(),
     Component.DesktopOnly(Component.Explorer({
-      title: "Explorer",
       folderDefaultState: "collapsed",
-      filterFn: (node) => node.name !== "college"
+      filterFn: (node) => node.name !== "x"
     })),
   ],
   right: [
@@ -46,7 +45,10 @@ export const defaultListPageLayout: PageLayout = {
     Component.MobileOnly(Component.Spacer()),
     Component.Search(),
     Component.Darkmode(),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.DesktopOnly(Component.Explorer({
+      folderDefaultState: "collapsed",
+      filterFn: (node) => node.name !== "x"
+    })),
   ],
   right: [],
 }
