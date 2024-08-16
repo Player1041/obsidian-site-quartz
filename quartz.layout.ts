@@ -32,7 +32,10 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
-    Component.MobileOnly(Component.Explorer()),
+    Component.MobileOnly(Component.Explorer({
+      folderDefaultState: "collapsed",
+      filterFn: (node) => node.name !== "x"
+    })),
     Component.DesktopOnly(Component.TableOfContents())
   ],
 }
