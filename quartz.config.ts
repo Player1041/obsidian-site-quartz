@@ -15,7 +15,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "player1041.github.io/notes",
+    baseUrl: "player.gdn",
     ignorePatterns: ["personal", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
