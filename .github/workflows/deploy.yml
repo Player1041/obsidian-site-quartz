@@ -14,9 +14,9 @@ jobs:
         with:
           fetch-depth: 0
       - run: npm install
-        working-directory: www
+        working-directory: notes
       - run: npm run build
-        working-directory: www
+        working-directory: notes
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
