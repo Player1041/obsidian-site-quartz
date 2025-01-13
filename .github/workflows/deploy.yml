@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: npm install
-      - run: npx quartz create
+      - run: npx quartz build
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
