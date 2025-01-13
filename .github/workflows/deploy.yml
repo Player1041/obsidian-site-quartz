@@ -20,7 +20,7 @@ jobs:
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
-          path: www/.vitepress/dist/
+          path: /notes/content
           remote_path: /home/smallweb/smallweb/notes/content
           remote_host: ssh.player.gdn
           remote_user: smallweb
