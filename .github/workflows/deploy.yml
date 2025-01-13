@@ -25,3 +25,18 @@ jobs:
           remote_host: ssh.player.gdn
           remote_user: smallweb
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+  example:
+    runs-on: ubuntu-latest
+    environment: playground
+    permissions:
+      actions:     read  # required for qoomon/actions--context action
+      deployments: read  # required for qoomon/actions--context action
+      contents: read
+    steps:
+      - uses: qoomon/actions--context@v1
+        id: context
+
+      - run: |
+          echo "Current Environment: ${{ steps.context.outputs.environment }}"
+          echo "Job ID: ${{ steps.context.outputs.job_id }}"
+          echo "Job Logs: ${{ steps.context.outputs.job_log_url }}"
