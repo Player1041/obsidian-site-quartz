@@ -15,12 +15,14 @@ jobs:
         with:
           fetch-depth: 0
       - run: npm install
-      - run: npx quartz build
+      - run: dir
+      - run: npm quartz build
+        working-directory: notes
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
-          path: /notes/content
-          remote_path: /home/smallweb/smallweb/notes/content
+          path: /notes/
+          remote_path: /home/smallweb/smallweb/notes
           remote_host: ssh.player.gdn
           remote_user: smallweb
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
