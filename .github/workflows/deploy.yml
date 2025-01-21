@@ -31,23 +31,15 @@ jobs:
           uses: actions/upload-pages-artifact@v2
           with:
             path: public
-            
-  deploy:
-    name: Deploy site and docs
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -rv --delete
-          path: ./public/
-          remote_path: /home/smallweb/smallweb/notes/public
-          remote_host: ssh.player.gdn
-          remote_user: smallweb
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        - uses: burnett01/rsync-deployments@7.0.1
+          with:
+            switches: -rv --delete
+            path: ./public/
+            remote_path: /home/smallweb/smallweb/notes/public
+            remote_host: ssh.player.gdn
+            remote_user: smallweb
+            remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+  
   example:
     runs-on: ubuntu-latest
     environment: playground
