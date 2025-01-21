@@ -40,11 +40,11 @@ jobs:
         with:
           fetch-depth: 0
       - run: npm install
-      - run: dir
+      - run: npx quartz build
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
-          path: /home/smallweb/smallweb/notes
+          path: ./public/
           remote_path: /home/smallweb/smallweb/notes
           remote_host: ssh.player.gdn
           remote_user: smallweb
