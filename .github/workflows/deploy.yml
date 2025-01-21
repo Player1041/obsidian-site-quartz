@@ -45,7 +45,7 @@ jobs:
         with:
           switches: -rv --delete
           path: ./public/
-          remote_path: /home/smallweb/smallweb/notes
+          remote_path: /home/smallweb/smallweb/notes/public
           remote_host: ssh.player.gdn
           remote_user: smallweb
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
