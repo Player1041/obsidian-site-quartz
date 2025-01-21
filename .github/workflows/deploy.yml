@@ -44,7 +44,7 @@ jobs:
       - uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -rv --delete
-          path: /notes/
+          path: /home/smallweb/smallweb/notes
           remote_path: /home/smallweb/smallweb/notes
           remote_host: ssh.player.gdn
           remote_user: smallweb
