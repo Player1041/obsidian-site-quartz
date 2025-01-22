@@ -3,7 +3,7 @@ name: Web
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["Submodule Sync"]
+    workflows: ["Submodules Sync"]
   push:
     branches:
       - main
