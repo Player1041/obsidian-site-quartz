@@ -21,6 +21,10 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18.14
+        - name: Git Submodule Pull
+          run: git pull --recurse-submodules
+        - name: Update
+          run: git submodule update --remote --recursive
         - name: Checkout
           uses: actions/checkout@v2
           with: 
