@@ -15,14 +15,14 @@ jobs:
   build:
       runs-on: ubuntu-22.04
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             fetch-depth: 0 # Fetch all history for git info
-        - uses: actions/setup-node@v3
+        - uses: actions/setup-node@v4
           with:
             node-version: 22.13
         - name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
           with: 
             token: ${{ secrets.CI_TOKEN }}
             submodules: true
@@ -31,10 +31,10 @@ jobs:
         - name: Build Quartz
           run: npx quartz build
         - name: Upload artifact
-          uses: actions/upload-pages-artifact@v2
+          uses: actions/upload-pages-artifact@v3
           with:
             path: public
-        - uses: burnett01/rsync-deployments@7.0.1
+        - uses: burnett01/rsync-deployments@7.0.2
           with:
             switches: -rv --delete
             path: ./public/
@@ -51,7 +51,7 @@ jobs:
       deployments: read  # required for qoomon/actions--context action
       contents: read
     steps:
-      - uses: qoomon/actions--context@v1
+      - uses: qoomon/actions--context@v2
         id: context
 
       - run: |
