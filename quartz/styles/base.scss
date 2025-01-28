@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @use "./variables.scss" as *;
 @use "./syntax.scss";
 @use "./callouts.scss";
@@ -121,7 +123,7 @@ a {
 }
 
 .page {
-  max-width: calc(#{map-get($breakpoints, desktop)} + 300px);
+  max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
   & article {
     & > h1 {
@@ -151,24 +153,25 @@ a {
 
   & > #quartz-body {
     display: grid;
-    grid-template-columns: #{map-get($desktopGrid, templateColumns)};
-    grid-template-rows: #{map-get($desktopGrid, templateRows)};
-    column-gap: #{map-get($desktopGrid, columnGap)};
-    row-gap: #{map-get($desktopGrid, rowGap)};
-    grid-template-areas: #{map-get($desktopGrid, templateAreas)};
+    grid-template-columns: #{map.get($desktopGrid, templateColumns)};
+    grid-template-rows: #{map.get($desktopGrid, templateRows)};
+    column-gap: #{map.get($desktopGrid, columnGap)};
+    row-gap: #{map.get($desktopGrid, rowGap)};
+    grid-template-areas: #{map.get($desktopGrid, templateAreas)};
+
     @media all and ($tablet) {
-      grid-template-columns: #{map-get($tabletGrid, templateColumns)};
-      grid-template-rows: #{map-get($tabletGrid, templateRows)};
-      column-gap: #{map-get($tabletGrid, columnGap)};
-      row-gap: #{map-get($tabletGrid, rowGap)};
-      grid-template-areas: #{map-get($tabletGrid, templateAreas)};
+      grid-template-columns: #{map.get($tabletGrid, templateColumns)};
+      grid-template-rows: #{map.get($tabletGrid, templateRows)};
+      column-gap: #{map.get($tabletGrid, columnGap)};
+      row-gap: #{map.get($tabletGrid, rowGap)};
+      grid-template-areas: #{map.get($tabletGrid, templateAreas)};
     }
     @media all and ($mobile) {
-      grid-template-columns: #{map-get($mobileGrid, templateColumns)};
-      grid-template-rows: #{map-get($mobileGrid, templateRows)};
-      column-gap: #{map-get($mobileGrid, columnGap)};
-      row-gap: #{map-get($mobileGrid, rowGap)};
-      grid-template-areas: #{map-get($mobileGrid, templateAreas)};
+      grid-template-columns: #{map.get($mobileGrid, templateColumns)};
+      grid-template-rows: #{map.get($mobileGrid, templateRows)};
+      column-gap: #{map.get($mobileGrid, columnGap)};
+      row-gap: #{map.get($mobileGrid, rowGap)};
+      grid-template-areas: #{map.get($mobileGrid, templateAreas)};
     }
 
     @media all and not ($desktop) {
@@ -566,7 +569,8 @@ ol.overflow {
     bottom: 0;
     opacity: 1;
     transition: opacity 0.3s ease;
-  }
+    background: linear-gradient(transparent 0px, var(--light));
+  }*/
 }
 
 .transclude {
@@ -580,111 +584,21 @@ ol.overflow {
   overflow-y: hidden;
 }
 
-// CSS Houdini
-// Using properties we can stack multiple types of transforms!
-// But this is not in mainline firefox yet :(
-// @property --mov-y {
-//   syntax: '<length>';
-//   initial-value: 0px;
-//   inherits: false;
-// }
-// @property --rot-y {
-//   syntax: '<angle>';
-//   initial-value: 0deg;
-//   inherits: false;
-// }
-
-:root {
-  --mov-y: 0px;
-  --rot-y: 0deg;
+.external-embed.youtube,
+iframe.pdf {
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
 }
 
-.ft- {
-
-  @keyframes rainbow-animate {
-      0% {
-        background-position: 0px 0;
-      }
-      50% {
-        background-position: 100px 0;
-      }
-      100% {
-        background-position: 200px 0;
-      }
-    };
-
-  @keyframes shake-animate {
-    // CSS Houdini
-    // 0% { --mov-y: 1px }
-    // 100% { --mov-y: -1px }
-    0% { transform: translateY(1px) }
-    100% { transform: translateY(-1px) }
-  };
-
-  @keyframes spin-animate {
-    // CSS Houdini
-    // 0% { --rot-y: 0deg }
-    // 100% { --rot-y: 360deg }
-    0% { transform: rotateY(0deg) }
-    100% { transform: rotateY(-360deg) }
-  };
-
-  @for $i from 0 through 10 {
-    &char {
-      animation-delay: 10ms;
-    }
-  }
-  &letters {
-    white-space: nowrap;
-  }
-
-  &letters span {
-    white-space: pre;
-  }
-
-  &rainbow {
-    background: repeating-linear-gradient(to right,#cb94ff 0px, #028ba1 20px, #4dc725 40px, #ff941a 60px, #d21b1b 80px, #cb94ff 100px);
-    background-size: 100px;
-    background-clip: text;
-    color: transparent !important;
-    & span, p {
-      color: transparent;
-    }
-    animation: rainbow-animate 2s linear infinite;
-  }
-
-  &shake .char {
-    animation: shake-animate 0.05s linear infinite alternate;
-    display: inline-block;
-    @for $i from 0 through 10 {
-      &:nth-child(10n + #{$i}) {
-        animation-delay: #{$i * -20ms};
-      }
-    }
-  }
-
-  &wave .char {
-    animation: shake-animate 0.20s ease-in-out infinite alternate;
-    display: inline-block;
-    @for $i from 0 through 10 {
-      &:nth-child(10n + #{$i}) {
-        animation-delay: #{$i * -40ms};
-      }
-    }
-  }
-
-  &spin .char {
-    animation: spin-animate 1.00s ease-in-out infinite;
-    display: inline-block;
-    @for $i from 0 through 10 {
-      &:nth-child(10n + #{$i}) {
-        animation-delay: #{$i * 40ms - 400ms};
-      }
-    }
-  }
-
-  // CSS Houdini
-  // &letters .char {
-  //   transform: translateY(var(--mov-y)) rotateY(var(--rot-y));
-  // }
+.navigation-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--secondary);
+  transition: width 0.2s ease;
+  z-index: 9999;
 }
